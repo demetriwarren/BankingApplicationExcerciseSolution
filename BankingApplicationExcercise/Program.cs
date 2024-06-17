@@ -23,7 +23,7 @@
             A1.Withdraw(-100);
             Console.WriteLine($"Balance is {A1.Balance:C}");
 
-            A1.Transfer(100, A2);                                   // transfers from A1 to A2
+            A1.Transfer(100, A2);                                   // transfers from A1 to A2.
 
         }
         
