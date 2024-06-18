@@ -8,7 +8,9 @@ namespace BankingApplicationExcercise
 {
    public class Account                                     // Class
     {
-        public int AccountId { get; set; } = 0;             //properties
+        private static int nextId { get; set; } = 1;
+
+        public int AccountId { get; private set; } = 0;             //properties    set to private so no other class can change the AcctID
         public string Description { get; set; } = string.Empty;
         public decimal Balance { get; set; } = 0;
 
@@ -22,6 +24,7 @@ namespace BankingApplicationExcercise
             Balance += Amount;                              // balance is an instance of the property: Balance
             return true;
         }
+
         public bool Withdraw(decimal Amount)
         {
             if (Amount <= 0)
@@ -35,6 +38,7 @@ namespace BankingApplicationExcercise
             Balance -= Amount;
             return true;
         }
+        
         public bool Transfer(decimal Amount, Account accountx) 
         {
             var success = Withdraw(Amount);
@@ -44,6 +48,12 @@ namespace BankingApplicationExcercise
             }
             return true;
         }
-        
+
+        public Account(string description)
+        {
+            AccountId = nextId++;
+            Description = description;
+            Balance = 0;
+        }
     }
 }
