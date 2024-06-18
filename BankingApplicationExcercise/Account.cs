@@ -18,9 +18,8 @@ namespace BankingApplicationExcercise
         {
             if (Amount <= 0)
             {
-                Console.WriteLine("Deposit amount cannot be zero or negative");
-                return false;
-            }
+                throw new NonPositiveAmountException();
+            } 
             Balance += Amount;                              // balance is an instance of the property: Balance
             return true;
         }
@@ -29,11 +28,10 @@ namespace BankingApplicationExcercise
         {
             if (Amount <= 0)
             {                                               //everything in this curly bracket is what the Method is going to do when its called/ran
-                Console.WriteLine("Withdrawal amount cannot be zero or negative");
-                return false;
+                throw new NonPositiveAmountException();
             }
-            if (Amount > Balance) { Console.WriteLine("Insufficient funds.");
-                return false;
+            if (Amount > Balance) { 
+                throw new InsufficientFundsException { Balance = Balance, Amount = Amount };
             }
             Balance -= Amount;
             return true;

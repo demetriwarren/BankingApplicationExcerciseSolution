@@ -14,7 +14,7 @@ namespace BankingApplicationExcercise
 
         public void CalcAndPayInterest(int months)          //adds the interest rate into this class
         {
-            var Interest = Balance() * (InterestRate / 12) * months;
+            var Interest = Balance() * (InterestRate / 12) * months; 
             Deposit(Interest);
         }
 

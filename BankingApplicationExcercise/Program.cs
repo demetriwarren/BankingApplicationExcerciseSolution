@@ -12,13 +12,27 @@
             Console.WriteLine($"Balance is {A1.Balance:C}");
             A1.Withdraw(250);
             Console.WriteLine($"Balance is {A1.Balance:C}");
-            A1.Withdraw(260);
-            Console.WriteLine($"Balance is {A1.Balance:C}");
-            A1.Withdraw(50);
-            Console.WriteLine($"Balance is {A1.Balance:C}");
-            A1.Deposit(750);
-            Console.WriteLine($"Balance is {A1.Balance:C}");
-            A1.Deposit(-500);
+            try
+            {
+                A1.Withdraw(260);
+                Console.WriteLine($"Balance is {A1.Balance:C}");
+                A1.Withdraw(50);
+                Console.WriteLine($"Balance is {A1.Balance:C}");
+                A1.Deposit(750);
+                Console.WriteLine($"Balance is {A1.Balance:C}");
+                A1.Deposit(-500);
+            } catch (InsufficientFundsException ex)
+            {
+                Console.WriteLine($"Balance is {ex.Balance}, Amount is {ex.Amount}");
+            } catch (NonPositiveAmountException ex)
+            {
+                Console.WriteLine($"Non Positive amount error!");
+
+            } catch (Exception)
+            {
+                Console.WriteLine("A bad exception occured");
+            }
+
             Console.WriteLine($"Balance is {A1.Balance:C}");
             A1.Withdraw(-100);
             Console.WriteLine($"Balance is {A1.Balance:C}");
